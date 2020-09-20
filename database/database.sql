@@ -14,6 +14,11 @@ CREATE TABLE modality(
     name VARCHAR(180),
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO modality (id,name) VALUES ('1','Ponencias');
+INSERT INTO modality (id,name) VALUES ('2','Asistentes');
+INSERT INTO modality (id,name) VALUES ('3','Semilleros');
+
 CREATE TABLE modality_project(
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(180),
