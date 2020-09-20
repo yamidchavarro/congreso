@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+
 import cors from 'cors';
 import morgan from 'morgan';
 import indexRoutes from "./routes/indexRoutes";
@@ -17,6 +18,8 @@ class Server {
         this.app.use(cors());
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended: false}));
+        this.app.use(express.static('client')); 
+      
     }
     routes(): void {
         this.app.use('/api/',regiterRoutes);

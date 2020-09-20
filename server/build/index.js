@@ -19,6 +19,7 @@ class Server {
         this.app.use(cors_1.default());
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
+        this.app.use(express_1.default.static('client'));
     }
     routes() {
         this.app.use('/api/', registerRoutes_1.default);
