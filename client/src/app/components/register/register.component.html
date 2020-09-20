@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="row mb-3">
+        <h2 class="form-group col-lg">Registro</h2>
+    </div>
+    <div class="form-group">
+        <label>Modalidad</label>
+        <select class="form-control" ngbAutofocus [(ngModel)]="user.modality_id">
+            <option value="0" selected disabled>-- Seleccione --</option>
+            <option *ngFor="let modality of modality" [value]="modality.id">
+                {{modality.name}}
+            </option>
+        </select>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-lg">
+            <label>Tipo de Documento</label>
+            <select class="form-control" [(ngModel)]="user.type_docu_id">
+                <option value="0" selected disabled>-- Seleccione --</option>
+                <option *ngFor="let type of typeDocu" [value]="type.id">
+                    {{type.name}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group col-lg">
+            <label>N&ordm; de Documento</label>
+            <input type="number" class="form-control" [(ngModel)]="user.document" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Nombres</label>
+        <input type="text" class="form-control" [(ngModel)]="user.name" />
+    </div>
+    <div class="form-group">
+        <label>Apellidos</label>
+        <input type="text" class="form-control" [(ngModel)]="user.last_name" />
+    </div>
+    <div class="row">
+        <div class="form-group col-lg">
+            <label>Departamento</label>
+            <select class="form-control" (change)="getCity($event)">
+                <option value="0" disabled selected>-- Seleccione --</option>
+                <option *ngFor="let depart of departament" [value]="depart.id">
+                    {{depart.name}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group col-lg">
+            <label>Ciudad</label>
+            <select class="form-control" [(ngModel)]="user.city_id">
+                <option value="0" selected disabled>-- Seleccione --</option>
+                <option *ngFor="let city of city" [value]="city.id">
+                    {{city.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Cargo u Ocupaci&oacute;n</label>
+        <input type="text" class="form-control" [(ngModel)]="user.position" />
+    </div>
+    <div class="form-group">
+        <label>Correo Personal</label>
+        <input type="email" class="form-control" [(ngModel)]="user.email" />
+    </div>
+    <!-- SEMILLEROS & PONENCIAS -->
+    <div *ngIf="user.modality_id == 3 || user.modality_id == 1">
+        <div class="form-group">
+            <label>Centro de Formaci&oacute;n</label>
+            <input type="text" class="form-control" [(ngModel)]="user.sena_center" />
+        </div>
+        <div class="form-group">
+            <label>Eje Tem&aacute;tico</label>
+            <select class="form-control" [(ngModel)]="user.main_theme_id">
+                <option value="0" selected disabled>-- Seleccione --</option>
+                <option *ngFor="let main of mainTheme" [value]="main.id">
+                    {{main.name}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Autor del Proyecto</label>
+            <input type="text" class="form-control" [(ngModel)]="user.project_owner" />
+        </div>
+        <div class="form-group">
+            <label>Nombre del Proyecto</label>
+            <input type="text" class="form-control" [(ngModel)]="user.name_project" />
+        </div>
+        <div class="form-group">
+            <label>Resumen</label>
+            <input type="text" class="form-control" [(ngModel)]="user.summary" />
+        </div>
+    </div>
+    <!-- PONENCIAS -->
+    <div *ngIf="user.modality_id == 1">
+        <div class="form-group">
+            <label>Correo Institucional</label>
+            <input type="email" class="form-control" [(ngModel)]="user.email_center" />
+        </div>
+    </div>
+    <!-- ASISTENTES -->
+    <div *ngIf="user.modality_id == 2">
+        <div class="form-group">
+            <label>Entidad</label>
+            <input type="text" class="form-control" [(ngModel)]="user.entity" />
+        </div>
+    </div>
+    <!-- SEMILLEROS -->
+    <div *ngIf="user.modality_id == 3">
+        <div class="form-group">
+            <label>Instituci&oacute;n Superior</label>
+            <input type="text" class="form-control" placeholder="Aplica Universitarios"
+                [(ngModel)]="user.university_center" />
+        </div>
+        <div class="form-group">
+            <label>Modalidad del Proyecto</label>
+               
+                <select class="form-control" [(ngModel)]="user.modality_project_id">
+                    <option value="0" selected disabled>-- Seleccione --</option>
+                    <option *ngFor="let modality of modalityProject" [value]="modality.id">
+                        {{modality.name}}
+                    </option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label>URL del Poster</label>
+            <input type="text" class="form-control" [(ngModel)]="user.url_poster"/>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary col-12" (click)="saveForm()">Guardar</button>
+</div>
